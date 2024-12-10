@@ -5,6 +5,10 @@ import { DeleteProduct } from './deleteButton'
 export const Table = async () => {
   const products = await prisma.product.findMany()
 
+  if (!products) {
+    return <h2 className='max-w-4xl mx-auto'>No hay datos de momento</h2>
+  }
+
   const formattedProducts = products.map((product: any) => ({
     ...product,
     price: parseFloat(product.price.toString()),
