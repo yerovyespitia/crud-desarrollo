@@ -21,37 +21,23 @@ export const Table = async () => {
             </tr>
           </thead>
           <tbody>
-            {products.map(
-              ({
-                id,
-                name,
-                description,
-                price,
-                amount,
-              }: {
-                id: number
-                name: string
-                description: string
-                price: number
-                amount: number
-              }) => (
-                <tr key={id}>
-                  <td className='border px-4 text-center'>{id}</td>
-                  <td className='border px-4 text-center'>{name}</td>
-                  <td className='border px-4 text-center'>{description}</td>
-                  <td className='border px-4 text-center'>
-                    {price.toString()}
-                  </td>
-                  <td className='border px-4 text-center'>{amount}</td>
-                  <td className='border px-4 text-center cursor-pointer'>
-                    <Link href={`/edit-product/${id}`}>✏️</Link>
-                  </td>
-                  <td className='border px-4 text-center cursor-pointer'>
-                    <DeleteProduct productId={id} />
-                  </td>
-                </tr>
-              )
-            )}
+            {products.map(({ id, name, description, price, amount }: any) => (
+              <tr key={id}>
+                <td className='border px-4 text-center'>{id}</td>
+                <td className='border px-4 text-center'>{name}</td>
+                <td className='border px-4 text-center'>{description}</td>
+                <td className='border px-4 text-center'>
+                  {parseFloat(price.toString())}
+                </td>
+                <td className='border px-4 text-center'>{amount}</td>
+                <td className='border px-4 text-center cursor-pointer'>
+                  <Link href={`/edit-product/${id}`}>✏️</Link>
+                </td>
+                <td className='border px-4 text-center cursor-pointer'>
+                  <DeleteProduct productId={id} />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </center>
