@@ -1,6 +1,6 @@
 'use client'
 import { editProduct } from '@/actions'
-import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
 
 export const EditProduct = ({ product, id }: any) => {
   return (
@@ -11,7 +11,7 @@ export const EditProduct = ({ product, id }: any) => {
           if (!result) {
             alert('El nombre del producto ya existe. Por favor escoja otro')
           } else {
-            redirect('/')
+            revalidatePath('/')
           }
         }}
         className='flex flex-col gap-4'
