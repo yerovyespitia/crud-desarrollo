@@ -1,6 +1,5 @@
 'use client'
 import { createProduct } from '@/actions'
-import { revalidatePath } from 'next/cache'
 
 export default function Page() {
   return (
@@ -10,8 +9,6 @@ export default function Page() {
           const result = await createProduct(formData)
           if (!result) {
             alert('El nombre del producto ya existe. Por favor escoja otro')
-          } else {
-            revalidatePath('/')
           }
         }}
         className='flex flex-col gap-4'

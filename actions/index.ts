@@ -1,5 +1,7 @@
 'use server'
 import prisma from '@/lib/prisma'
+import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
 
 export const createProduct = async (formData: FormData) => {
   const name = formData.get('name')?.toString()
@@ -28,7 +30,8 @@ export const createProduct = async (formData: FormData) => {
     },
   })
 
-  return true
+  revalidatePath('/')
+  redirect('/')
 }
 
 export const editProduct = async (formData: FormData, id: string) => {
@@ -66,5 +69,6 @@ export const editProduct = async (formData: FormData, id: string) => {
     },
   })
 
-  return true
+  revalidatePath('/')
+  redirect('/')
 }

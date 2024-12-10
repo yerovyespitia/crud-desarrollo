@@ -1,6 +1,5 @@
 'use client'
 import { editProduct } from '@/actions'
-import { revalidatePath } from 'next/cache'
 
 export const EditProduct = ({ product, id }: any) => {
   return (
@@ -10,8 +9,6 @@ export const EditProduct = ({ product, id }: any) => {
           const result = await editProduct(formData, id)
           if (!result) {
             alert('El nombre del producto ya existe. Por favor escoja otro')
-          } else {
-            revalidatePath('/')
           }
         }}
         className='flex flex-col gap-4'
